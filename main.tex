@@ -1,0 +1,130 @@
+% 《墨甘兰语法》主文档
+% 南传上座部佛教巴利语法文献译疏主文档
+% 请使用LuaLaTeX编译（支持缅甸文和巴利文排版）
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 版本信息
+% ======================================================================
+% Version: 1.0.0
+% Release Date: 2025-10-09
+% Author: 德升尊者 (Bhikkhu Gunodaya)
+% Maintainer: 德升尊者
+% License: 法布施 (Dhamma Dana)
+% 
+% 版本历史:
+% 1.0.0 (2025-10-09) - 初始版本发布
+%   - 完成墨甘兰语法底本
+%   - 实现中文-巴利文-缅甸文混合排版
+%   - 建立完整的语法注释系统
+%   - 设计专业的学术排版格式
+%
+% 编译要求:
+% - 引擎: LuaLaTeX (必需)
+% - 字体: Padauk (缅甸文), TeX Gyre Schola (拉丁文)
+% - 宏包: 详见 moggallana.cls 文档
+%
+% 项目结构:
+% - text/cover.tex     : 封面设计
+% - text/000.tex       : 体例说明  
+% - text/01-07.tex     : 各章正文
+% - references_Manual.bib: 参考文献数据库
+%
+% 注意事项:
+% 1. 必须使用LuaLaTeX编译以支持缅甸文渲染
+% 2. 确保系统中安装有Padauk字体
+% 3. 参考文献使用biblatex处理，非BibTeX
+% =====================================================================%
+
+% 文档类设置
+\documentclass[]{moggallana}
+
+% 参考文献数据库设置
+\addbibresource{references_Manual.bib} % 为biblatex引入参考文献数据库
+\bibliography{references_Manual} % 利用biblatex工具生成参考文献
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 文档元数据设置
+\title{\textbf{မောဂ္ဂလ္လာနဗျာကရဏံ}} % 巴利文书名
+\author{%
+    အာစရိ​ယေန\\ % 作者信息（巴利文）
+    ဘဒန္တမောဂ္ဂလ္လာ​နေန\\ % 尊师名号
+    ဝိရစိတံ % 撰述标识
+}
+\date{} % 出版日期留空
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% 封面页
+\include{text/cover} % 封面设计文件
+
+% 前文部分（罗马数字页码）
+\frontmatter 
+
+% 书名页
+\maketitle % 打印书名页信息
+\cleardoublepage % 空白页
+
+% 索引收集设置（注释状态，按需启用）
+%\makeindex % 开启索引的收集功能
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 目录系统设置
+% 使用etocsetnexttocdepth替代etocsettocdepth
+
+% 简目设置（显示章名级别）
+\setcounter{tocdepth}{0} % 显示章名级别
+\renewcommand{\contentsname}{မာတိကာ} % 简目标题
+\tableofcontents % 打印简目目录
+
+% 细目设置（显示详细目录结构）
+\renewcommand{\contentsname}{မာတိကာ} % 细目标题
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 体例说明章节
+\include{text/000} % 体例说明文件
+
+% 正文部分（阿拉伯数字页码）
+\mainmatter
+
+% 经文条目
+\include{text/suttapatho}
+
+% 正文
+\include{text/01}
+\include{text/02}
+\include{text/03}
+\include{text/04}
+\include{text/05}
+\include{text/06}
+\include{text/07}
+\include{text/nigamakatha}
+
+% 附录部分（注释状态，按需启用）
+%\appendix % 附录开始
+%\include{appendixA} % 语法术语表
+%\include{appendixB} % 语法规则索引
+%\include{appendixC} % 经典例句汇编
+
+% 后记部分（无页码编号）
+\backmatter
+
+% 后记章节（注释状态，按需启用）
+%\include{epilogue} % 后记内容
+
+% 参考文献系统
+%\nocite{*} % 引用所有文献（注释状态）
+\printbibliography % 打印参考文献（使用biblatex）
+\markboth{参考文献}{参考文献} % 页眉修复
+\addcontentsline{toc}{chapter}{参考文献} % 添加到目录
+
+% 索引系统
+\printindex % 利用makeindex工具生成索引
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
