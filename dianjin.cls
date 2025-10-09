@@ -145,8 +145,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase] % 等宽字体：用于代码和计算机文本
 \babelfont[latin]{rm}{TeX Gyre Schola} % 为拉丁语设置字体：TeX Gyre Schola
 
-% 设置缅甸文字体：使用NotoSansMyanmar字体，支持缅甸文渲染
-\babelfont[burmese]{rm}[Renderer=Harfbuzz]{NotoSansMyanmar} % 为缅甸语设置字体，启用Harfbuzz渲染器
+% 设置缅甸文字体
+\babelfont[burmese]{rm}[Renderer=Harfbuzz]{NotoSansMyanmar} % 使用NotoSansMyanmar字体，启用Harfbuzz渲染器
 
 % 定义巴利文专用字体
 \newfontfamily{\palifont}[
@@ -154,10 +154,12 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
     Path=./Myanmar-Unicode-Fonts/,
     Extension=.ttf,
     UprightFont=Padauk,
-    BoldFont=Padauk
+    BoldFont=PadaukSgaw-bookbold
 ]{Padauk}
+
 % 巴利文格式命令
-\newcommand{\pali}[1]{{\palifont #1}} % 使用专门命令显示巴利文
+\newcommand{\pali}[1]{{\palifont #1}} % 普通巴利文
+\newcommand{\palibf}[1]{{\palifont\bfseries #1}} % 粗体巴利文
 
 % 定义自动语言切换规则：基于字符ID自动检测并切换字体
 \babelprovide[import, onchar=ids fonts]{burmese} % 导入缅甸语支持，自动检测缅甸文字符
@@ -665,8 +667,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \newcommand{\namo}{
     \begin{center}
         \Large \textbf{\em 
-            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။}
-%            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
+            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။
+            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
         \vspace{5ex}
     \end{center}
 }
