@@ -56,7 +56,7 @@
     },
     % 小节（Subsection）级别设置
     subsection={
-        name={\arabic{chapter}.\arabic{section}.,}, % 格式：章号.节号.小节号
+        name={}, % 格式：章号.节号.小节号
         number=\arabic{subsection}, % 使用阿拉伯数字编号
         format={\large\bfseries\songti}, % 较大号粗体宋体
     },
@@ -100,12 +100,19 @@
 % ==================== 语义化文档结构命令 ====================
 % 经文
 \NewDocumentCommand{\sutta}{ m m m }{%
-    \subsection*{#2 \quad #3}\label{sut:#1}%
+    \subsubsection{#2 \quad #3}\label{sut:#1}%
 }
 
 % 带(ဂဏ)标识的经文 - 使用方框标识且缩进
+% 手动模拟 paragraph 样式
 \NewDocumentCommand{\suttagana}{ m m m }{%
-    \subsection*{\hspace{2em}\fbox{#2} \quad #3}\label{sut:#1}%
+    \par\noindent{\normalfont\bfseries\hspace{2em}\fbox{#2} \quad #3}\label{sut:#1}%
+    \par\nobreak\noindent\ignorespaces%
+}
+
+% 混入正文的带(ဂဏ)标识的经文 - 使用方框标识
+\NewDocumentCommand{\suttagananormal}{ m m m }{%
+    {\normalfont\bfseries\fbox{#2} \quad #3}\label{sut:#1}%
 }
 
 % 经文汉译
