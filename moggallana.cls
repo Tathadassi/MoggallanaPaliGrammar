@@ -189,6 +189,19 @@
     \hfill \pageref{sut:#1}\par\nobreak%
 }
 
+% 带(ဂဏ)标识的多行经文条目命令 - 使用方框标识且缩进，支持多行文本和页码引用开关
+\NewDocumentCommand{\suttaganaitemmulti}{ s m m m }{%
+    \item[\hspace{2em}\fbox{#3}] \quad 
+    \parbox[t]{\dimexpr\linewidth-4em-\fboxsep-\fboxrule*2}{%
+        \raggedright
+        #4%
+        \IfBooleanTF{#1}
+            {\nobreak\hfill\pageref{sut:#2}}
+            {}
+    }%
+    \par\nobreak%
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 5. 继承的功能说明
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
