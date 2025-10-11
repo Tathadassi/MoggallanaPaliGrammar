@@ -293,32 +293,32 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \NewDocumentCommand\dhatu{m o}
 {%
     \IfNoValueTF{#2}%
-    {$\surd$\palibf{#1}}% % 无注释：仅显示√符号和文字
-    {$\surd$\palibf{#1}\jiazhu[]{#2}}% % 有注释：显示√符号、文字和蓝色注释
+    {$\surd$\palimmbf{#1}}% % 无注释：仅显示√符号和文字
+    {$\surd$\palimmbf{#1}\jiazhu[]{#2}}% % 有注释：显示√符号、文字和蓝色注释
 }
 
 % 形字命令（三角符号）
 \NewDocumentCommand\linga{m o}
 {%
     \IfNoValueTF{#2}%
-    {$\triangle$\pali{#1}}% % 无注释：仅显示△符号和文字
-    {$\triangle$\pali{#1}\jiazhu[]{#2}}% % 有注释：显示△符号、文字和蓝色注释
+    {$\triangle$\palimm{#1}}% % 无注释：仅显示△符号和文字
+    {$\triangle$\palimm{#1}\jiazhu[]{#2}}% % 有注释：显示△符号、文字和蓝色注释
 }
 
 % 缘字命令（星号符号）
 \NewDocumentCommand\paccaya{m o}
 {%
     \IfNoValueTF{#2}%
-    {\textasteriskcentered \palibf{#1}}% % 无注释：仅显示*符号和文字
-    {\textasteriskcentered \palibf{#1}\jiazhu[]{#2}}% % 有注释：显示*符号、文字和蓝色注释
+    {\textasteriskcentered \palimmbf{#1}}% % 无注释：仅显示*符号和文字
+    {\textasteriskcentered \palimmbf{#1}\jiazhu[]{#2}}% % 有注释：显示*符号、文字和蓝色注释
 }
 
 % 别字命令（@符号）
 \NewDocumentCommand\vibhatti{m o}
 {%
     \IfNoValueTF{#2}%
-    {$@$\pali{#1}}% % 无注释：仅显示@符号和文字
-    {$@$\pali{#1}\jiazhu[]{#2}}% % 有注释：显示@符号、文字和蓝色注释
+    {$@$\palimm{#1}}% % 无注释：仅显示@符号和文字
+    {$@$\palimm{#1}\jiazhu[]{#2}}% % 有注释：显示@符号、文字和蓝色注释
 }
 
 % 词形命令（圈中点符号）：表示完整的词形
@@ -642,12 +642,12 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
         {% 无可选参数
           \iftermexists{#2}
             {% 术语存在：显示中文译名+蓝色原文注释
-              {\kaishu \getterm{#2}}{\scriptsize\textcolor{blue}{\palibf{(#2)}}}%
+              {\kaishu \getterm{#2}}{\scriptsize\textcolor{blue}{\palimmbf{(#2)}}}%
             }
             {\textcolor{blue}{#2}}% 术语不存在：显示蓝色原文
         }
         {% 有可选参数：显示提供的可选参数+蓝色原文注释
-          {\kaishu #3}{\scriptsize\textcolor{blue}{\palibf{(#2)}}}%
+          {\kaishu #3}{\scriptsize\textcolor{blue}{\palimmbf{(#2)}}}%
         }%
     }
     {% 无星号模式：正常显示
@@ -656,7 +656,7 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
           \iftermexists{#2}
             {\getterm{#2}}% 术语存在：显示中文译名
             {% 术语不存在：仅显示蓝色原文
-              {\small\textcolor{blue}{\palibf{#2}}}\normalsize%
+              {\small\textcolor{blue}{\palimmbf{#2}}}\normalsize%
             }%
         }
         {#3}% 有可选参数：显示提供的可选参数
