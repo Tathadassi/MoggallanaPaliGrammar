@@ -149,7 +149,7 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \babelfont[burmese]{rm}[Renderer=Harfbuzz]{NotoSansMyanmar} % 使用NotoSansMyanmar字体，启用Harfbuzz渲染器
 
 % 定义巴利文专用字体
-\newfontfamily{\palifont}[
+\newfontfamily{\palimmfont}[
     Renderer=Harfbuzz,
     Path=./Myanmar-Unicode-Fonts/,
     Extension=.ttf,
@@ -158,10 +158,10 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 ]{Padauk}
 
 % 巴利文格式命令
-\newcommand{\palimm}[1]{{\palifont #1}} % 细体缅文巴利
-\newcommand{\palimmbf}[1]{{\palifont\bfseries #1}} % 粗体缅文巴利
+\newcommand{\palimm}[1]{{\palimmfont #1}} % 细体缅文巴利
+\newcommand{\palimmbf}[1]{{\palimmfont\bfseries #1}} % 粗体缅文巴利
 \newcommand{\paliroman}[1]{\textit{#1}} % 斜体罗马巴利
-\newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % % 粗斜体罗马巴利
+\newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % 粗斜体罗马巴利
 
 % 指定单词断字规则：为巴利文设置正确的断字点
 \hyphenation{vi-bh-at-ti vi-bh-at-tis}
