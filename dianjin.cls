@@ -158,8 +158,13 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 ]{Padauk}
 
 % 巴利文格式命令
-\newcommand{\pali}[1]{{\palifont #1}} % 普通巴利文
-\newcommand{\palibf}[1]{{\palifont\bfseries #1}} % 粗体巴利文
+\newcommand{\palimm}[1]{{\palifont #1}} % 细体缅文巴利
+\newcommand{\palimmbf}[1]{{\palifont\bfseries #1}} % 粗体缅文巴利
+\newcommand{\paliroman}[1]{\textit{#1}} % 斜体罗马巴利
+\newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % % 粗斜体罗马巴利
+
+% 指定单词断字规则：为巴利文设置正确的断字点
+\hyphenation{vi-bh-at-ti vi-bh-at-tis}
 
 % 定义自动语言切换规则：基于字符ID自动检测并切换字体
 \babelprovide[import, onchar=ids fonts]{burmese} % 导入缅甸语支持，自动检测缅甸文字符
