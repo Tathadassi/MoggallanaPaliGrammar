@@ -154,6 +154,67 @@
 % 经文链接命令
 \newcommand{\suttalink}[2]{``\hyperref[sut:#1]{#2}''}
 
+% ==================== 语形计算命令 ====================
+% 自定义斜角删除线
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand{\mystrike}[1]{%
+  \tikz[baseline=(a.base)]{
+    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
+    % 计算对角线长度和角度
+    \coordinate (sw) at (a.south west);
+    \coordinate (ne) at (a.north east);
+    \coordinate (nw) at (a.north west);
+    \coordinate (se) at (a.south east);
+    
+    % 绘制45度对角线删除线（从左上到右下）
+    \draw[red, line width=0.8pt] 
+      ($(nw) + (-0.1em,0.1em)$) -- 
+      ($(se) + (0.1em,-0.1em)$);
+  }%
+}
+
+% 或者更精细的版本，带延长效果
+\newcommand{\mystrikeextended}[1]{%
+  \tikz[baseline=(a.base)]{
+    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
+    % 计算扩展后的对角线端点
+    \path (a.south west) -- (a.north east) 
+      coordinate[pos=-0.1] (start) 
+      coordinate[pos=1.1] (end);
+    
+    % 绘制45度对角线删除线，两端延长10%
+    \draw[red, line width=0.8pt, line cap=round] 
+      (start) -- (end);
+  }%
+}
+
+% အာ​ဒေသ命令 - 使用延长版本
+\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \texthl{#2}} % အာ​ဒေသ
+\newcommand{\lopa}[1]{\mystrike{#1}} % 删除线效果
+%\newcommand{\adesa}[2]{\palimm{#1} $\rightarrow$ \palimmbf{\texthl{#2}}} % အာ​ဒေသ
+
+% 高亮命令
+\newcommand{\texthl}[1]{\textcolor{blue}{#1}} % 蓝色高亮
+
+% 巴利文示例环境
+\newcommand{\palisample}[1]{%
+    \begin{center}
+    \large \itshape #1
+    \end{center}
+}
+
+% 示例分隔符
+\newcommand{\sampleor}[1][或者]{\\\textup{\normalsize #1}\\}
+
+% 分隔线
+\newcommand{\seprule}{%
+    \begin{center}
+    \rule{0.4\linewidth}{0.6pt}
+    \end{center}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 4. 经文列表格式设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
