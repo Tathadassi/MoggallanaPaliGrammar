@@ -103,14 +103,14 @@
     \subsubsection{#2 \quad #3}\label{sut:#1}%
 }
 
-% 带(ဂဏ)标识的经文 - 使用方框标识且缩进
+% 群组经文 - 使用方框标识且缩进
 % 手动模拟 paragraph 样式
 \NewDocumentCommand{\suttagana}{ m m m }{%
     \par\noindent{\normalfont\bfseries\hspace{2em}\fbox{#2} \quad #3}\label{sut:#1}%
     \par\nobreak\noindent\ignorespaces%
 }
 
-% 混入正文的带(ဂဏ)标识的经文 - 使用方框标识
+% 混入正文的群组经文 - 使用方框标识
 \NewDocumentCommand{\suttagananormal}{ m m m }{%
     {\normalfont\bfseries\fbox{#2} \quad #3}\label{sut:#1}%
 }
@@ -176,37 +176,48 @@
     after={\vspace{0.5\baselineskip}}
 }
 
+% ==================== 经文列表条目命令 ====================
+
 % 经文条目命令 - 用于创建带页码引用的经文列表
+% 参数说明：
+%   #1 = 经文编号（用于标签引用）
+%   #2 = 条目标签内容
+%   #3 = 经文内容
 \NewDocumentCommand{\suttaitem}{ m m m }{%
     \item[#2] \quad #3 \hfill \pageref{sut:#1}\par\nobreak%
 }
 
-% 带(ဂဏ)标识的经文条目命令 - 使用方框标识且缩进，带页码引用开关（星号在第一个位置）
-\NewDocumentCommand{\suttaganaitem}{ s m m m }{%
-    \item[\hspace{2em}\fbox{#3}] \quad #4 
-    \IfBooleanTF{#1}
-        {\hfill \pageref{sut:#2}} % 如果有星号参数，则显示页码引用
-        {} % 如果没有星号参数，则不显示页码引用
-    \par\nobreak%
+% 群组经文条目命令 - 使用方框标识且缩进，不带页码引用
+% 参数说明：
+%   #1 = 经文编号（用于标签引用）
+%   #2 = 方框内的条目标签内容
+%   #3 = 经文内容
+\NewDocumentCommand{\suttaganaitem}{ m m m }{%
+    \item[\hspace{2em}\fbox{#2}] \quad #3\par\nobreak%
 }
 
-% 多行经文条目命令 - 用于处理跨行的经文
+% 多行经文条目命令 - 用于处理跨行的经文，带页码引用
+% 参数说明：
+%   #1 = 经文编号（用于标签引用）
+%   #2 = 条目标签内容
+%   #3 = 多行经文内容（支持\\换行）
 \NewDocumentCommand{\suttaitemmulti}{ m m m }{%
     \item[#2] \quad \parbox[t]{\dimexpr\linewidth-4em}{#3}%
     \hfill \pageref{sut:#1}\par\nobreak%
 }
 
-% 带(ဂဏ)标识的多行经文条目命令 - 使用方框标识且缩进，支持多行文本和页码引用开关
-\NewDocumentCommand{\suttaganaitemmulti}{ s m m m }{%
-    \item[\hspace{2em}\fbox{#3}] \quad 
+% 多行群组经文条目命令 - 使用方框标识且缩进，支持多行文本，不带页码引用
+% 参数说明：
+%   #1 = 经文编号（用于标签引用）
+%   #2 = 方框内的条目标签内容
+%   #3 = 多行经文内容（支持\\换行）
+\NewDocumentCommand{\suttaganaitemmulti}{ m m m }{%
+    \item[\hspace{2em}\fbox{#2}] \quad 
     \parbox[t]{\dimexpr\linewidth-4em-\fboxsep-\fboxrule*2}{%
-        \raggedright
-        #4%
-        \IfBooleanTF{#1}
-            {\nobreak\hfill\pageref{sut:#2}}
-            {}
+        \raggedright  % 设置左对齐，避免两端对齐产生的间距不均
+        #3%           % 经文内容
     }%
-    \par\nobreak%
+    \par\nobreak%     % 防止条目间出现不适当的分页
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
