@@ -672,8 +672,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \newcommand{\namo}{
     \begin{center}
         \Large \textbf{\em 
-            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။
-            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
+            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။}
+%            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
         \vspace{5ex}
     \end{center}
 }
