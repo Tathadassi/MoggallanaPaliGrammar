@@ -155,7 +155,7 @@
 \newcommand{\suttalink}[2]{``\hyperref[sut:#1]{#2}''}
 
 % ==================== 语形计算命令 ====================
-% 自定义斜角删除线
+% 定义斜角删除线
 \usepackage{tikz}
 \usetikzlibrary{calc}
 
@@ -190,13 +190,37 @@
   }%
 }
 
-% အာ​ဒေသ命令 - 使用延长版本
-\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \texthl{#2}} % အာ​ဒေသ
-\newcommand{\lopa}[1]{\mystrike{#1}} % 删除线效果
-%\newcommand{\adesa}[2]{\palimm{#1} $\rightarrow$ \palimmbf{\texthl{#2}}} % အာ​ဒေသ
+% 定义语法专用颜色 - 鲜艳夺目版本
+\usepackage{xcolor}
+\definecolor{adesacolor}{RGB}{0, 100, 255} % 鲜艳蓝色
+\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
+
+% 可选的其他鲜艳配色方案：
+
+% 方案A：高对比度鲜艳色
+%\definecolor{adesacolor}{RGB}{255, 50, 50} % 鲜艳红色
+%\definecolor{agamacolor}{RGB}{30, 180, 30} % 鲜艳绿色
+
+% 方案B：明亮活力色
+%\definecolor{adesacolor}{RGB}{0, 150, 255} % 亮蓝色
+%\definecolor{agamacolor}{RGB}{255, 105, 0} % 亮橙色
+
+% 方案C：深色背景上的鲜艳色
+%\definecolor{adesacolor}{RGB}{100, 200, 255} % 荧光蓝
+%\definecolor{agamacolor}{RGB}{255, 150, 50} % 荧光橙
+
+% 方案D：传统但更鲜艳
+%\definecolor{adesacolor}{RGB}{30, 120, 220} % 饱和蓝色
+%\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
 
 % 高亮命令
-\newcommand{\texthl}[1]{\textcolor{blue}{#1}} % 蓝色高亮
+\newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 蓝色高亮
+\newcommand{\agamahl}[1]{\textcolor{agamacolor}{#1}} % 饱和棕色高亮
+
+% 语形计算命令
+\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \adesahl{#2}} % အာ​ဒေသ
+\newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
+\newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
 
 % 巴利文示例环境
 \newcommand{\palisample}[1]{%
