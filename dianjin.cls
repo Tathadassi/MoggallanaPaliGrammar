@@ -149,7 +149,7 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \babelfont[burmese]{rm}[Renderer=Harfbuzz]{NotoSansMyanmar} % 使用NotoSansMyanmar字体，启用Harfbuzz渲染器
 
 % 定义巴利文专用字体
-\newfontfamily{\palifont}[
+\newfontfamily{\palimmfont}[
     Renderer=Harfbuzz,
     Path=./Myanmar-Unicode-Fonts/,
     Extension=.ttf,
@@ -158,13 +158,13 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 ]{Padauk}
 
 % 巴利文格式命令
-\newcommand{\palimm}[1]{{\palifont #1}} % 细体缅文巴利
-\newcommand{\palimmbf}[1]{{\palifont\bfseries #1}} % 粗体缅文巴利
+\newcommand{\palimm}[1]{{\palimmfont #1}} % 细体缅文巴利
+\newcommand{\palimmbf}[1]{{\palimmfont\bfseries #1}} % 粗体缅文巴利
 \newcommand{\paliroman}[1]{\textit{#1}} % 斜体罗马巴利
-\newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % % 粗斜体罗马巴利
+\newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % 粗斜体罗马巴利
 
 % 指定单词断字规则：为巴利文设置正确的断字点
-\hyphenation{vi-bh-at-ti vi-bh-at-tis}
+\hyphenation{vi-bh-at-ti vi-bh-at-tis saṃ-saṭ-ṭhaṃ}
 
 % 定义自动语言切换规则：基于字符ID自动检测并切换字体
 \babelprovide[import, onchar=ids fonts]{burmese} % 导入缅甸语支持，自动检测缅甸文字符
@@ -672,7 +672,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \newcommand{\namo}{
     \begin{center}
         \Large \textbf{\em 
-            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။}
+%            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။}
+            Na​mo tassa bhagava​to araha​to sammāsambuddhassa.}
 %            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
         \vspace{5ex}
     \end{center}
