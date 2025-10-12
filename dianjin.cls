@@ -703,7 +703,6 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 
 % 8.3 文本标记命令
 \newcommand{\peyyala}[1]{$\cdots\cdots$} % 省略号：表示重复或省略的内容
-\newcommand{\blankline}{\\[1em]} % 空白行
 
 % 8.4 自定义环境系统
 % 经名环境：用于显示经典名称（居中特大字体）

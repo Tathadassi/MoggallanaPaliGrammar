@@ -152,7 +152,7 @@
 }
 
 % 经文链接命令
-\newcommand{\suttalink}[2]{``\hyperref[sut:#1]{#2}''}
+\newcommand{\suttalink}[2]{“\hyperref[sut:#1]{#2}”}
 
 % ==================== 语形计算命令 ====================
 % 定义斜角删除线
@@ -222,19 +222,27 @@
 \newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
 \newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
 
+% 经文引用命令
+\newcommand{\suttena}[2]{\hfill%
+（依\suttalink{#1}{#2}）} % သု​တ္တေန
+
 % 语形计算环境
-\newenvironment{rupasiddhi}[1][\linewidth]
+\newenvironment{rupasiddhi}[1][0.9\linewidth] % 缩窄到90%宽度
   {{\large\faCalculator}% 语形计算图标（放大）
    \begin{minipage}[t]{#1}\hphantom{=}~}
   {\end{minipage}}
+
+\newcommand{\blankline}{\\[1em]\hphantom{=}~} % 空白行（用于分隔语形计算实例）
   
 % 示例
 % \begin{rupasiddhi}
 %     \linga{ပုရိသ} + \vibhatti{သိ} \\ 
 %     = ပုရိသ် + အ + သိ \\ 
 %     = ပုရိသ် + \lopa{အ} + သိ \\ 
-%     = ပုရိသ် + \adesa{သိ}{ဩ(ော)}（依\suttalink{105}{2.45}） \\ 
+%     = ပုရိသ် + \adesa{သိ}{ဩ (ော)}\suttena{105}{2.45} \\ 
 %     = \pada{ပုရိ​သော}
+%     \blankline
+%     另一个语形计算实例
 % \end{rupasiddhi}
 
 % 巴利文示例环境
