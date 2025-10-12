@@ -222,6 +222,21 @@
 \newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
 \newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
 
+% 语形计算环境
+\newenvironment{rupasiddhi}[1][\linewidth]
+  {{\large\faCalculator}% 语形计算图标（放大）
+   \begin{minipage}[t]{#1}\hphantom{=}~}
+  {\end{minipage}}
+  
+% 示例
+% \begin{rupasiddhi}
+%     \linga{ပုရိသ} + \vibhatti{သိ} \\ 
+%     = ပုရိသ် + အ + သိ \\ 
+%     = ပုရိသ် + \lopa{အ} + သိ \\ 
+%     = ပုရိသ် + \adesa{သိ}{ဩ(ော)}（依\suttalink{105}{2.45}） \\ 
+%     = \pada{ပုရိ​သော}
+% \end{rupasiddhi}
+
 % 巴利文示例环境
 \newcommand{\palisample}[1]{%
     \begin{center}
