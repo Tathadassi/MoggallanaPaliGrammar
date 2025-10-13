@@ -106,7 +106,7 @@
 % 群组经文 - 使用方框标识且缩进
 % 手动模拟 paragraph 样式
 \NewDocumentCommand{\suttagana}{ m m m }{%
-    \par\noindent{\normalfont\bfseries\hspace{2em}\fbox{#2} \quad #3}\label{sut:#1}%
+    \parstart{\normalfont\bfseries\hspace{2em}\fbox{#2} \quad #3}\label{sut:#1}%
     \par\nobreak\noindent\ignorespaces%
 }
 
@@ -226,11 +226,14 @@
 \newcommand{\suttena}[2]{\hfill%
 （依\suttalink{#1}{#2}）} % သု​တ္တေန
 
-% 语形计算环境
+% 语形计算环境（支持分页）
 \newenvironment{rupasiddhi}[1][0.9\linewidth] % 缩窄到90%宽度
-  {{\large\faCalculator}% 语形计算图标（放大）
-   \begin{minipage}[t]{#1}\hphantom{=}~}
-  {\end{minipage}}
+  {\parstart%
+   \hangindent=\dimexpr1.2em+0.5em\relax% 设置悬挂缩进（等号宽度+图标间距）
+   \hangafter=1% 从第一行之后开始悬挂
+   {\large\faCalculator}\hspace{0.5em}\hphantom{=}\hspace{0.18em}~% 图标和缩进，首行额外缩进
+   \palimmfont}% 直接设置巴利文字体
+  {\par}
 
 \newcommand{\blankline}{\\[1em]\hphantom{=}~} % 空白行（用于分隔语形计算实例）
   
