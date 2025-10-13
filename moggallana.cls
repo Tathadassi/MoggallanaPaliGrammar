@@ -89,7 +89,7 @@
 % 3. 墨甘兰特定功能设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 基于 J.R. Bhaddacak 巴利语法著作排版模板的优化版本
+% 基于 J.R. Bhaddacak 巴利语法著作排版模板
 % 设计理念：语义化、简洁化、用户友好
 
 % ==================== 布局命令 ====================
@@ -154,122 +154,8 @@
 % 经文链接命令
 \newcommand{\suttalink}[2]{“\hyperref[sut:#1]{#2}”}
 
-% ==================== 语形计算命令 ====================
-% 定义斜角删除线
-\usepackage{tikz}
-\usetikzlibrary{calc}
-
-\newcommand{\mystrike}[1]{%
-  \tikz[baseline=(a.base)]{
-    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
-    % 计算对角线长度和角度
-    \coordinate (sw) at (a.south west);
-    \coordinate (ne) at (a.north east);
-    \coordinate (nw) at (a.north west);
-    \coordinate (se) at (a.south east);
-    
-    % 绘制45度对角线删除线（从左上到右下）
-    \draw[red, line width=0.8pt] 
-      ($(nw) + (-0.1em,0.1em)$) -- 
-      ($(se) + (0.1em,-0.1em)$);
-  }%
-}
-
-% 或者更精细的版本，带延长效果
-\newcommand{\mystrikeextended}[1]{%
-  \tikz[baseline=(a.base)]{
-    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
-    % 计算扩展后的对角线端点
-    \path (a.south west) -- (a.north east) 
-      coordinate[pos=-0.1] (start) 
-      coordinate[pos=1.1] (end);
-    
-    % 绘制45度对角线删除线，两端延长10%
-    \draw[red, line width=0.8pt, line cap=round] 
-      (start) -- (end);
-  }%
-}
-
-% 定义语法专用颜色 - 鲜艳夺目版本
-\usepackage{xcolor}
-\definecolor{adesacolor}{RGB}{0, 100, 255} % 鲜艳蓝色
-\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
-
-% 可选的其他鲜艳配色方案：
-
-% 方案A：高对比度鲜艳色
-%\definecolor{adesacolor}{RGB}{255, 50, 50} % 鲜艳红色
-%\definecolor{agamacolor}{RGB}{30, 180, 30} % 鲜艳绿色
-
-% 方案B：明亮活力色
-%\definecolor{adesacolor}{RGB}{0, 150, 255} % 亮蓝色
-%\definecolor{agamacolor}{RGB}{255, 105, 0} % 亮橙色
-
-% 方案C：深色背景上的鲜艳色
-%\definecolor{adesacolor}{RGB}{100, 200, 255} % 荧光蓝
-%\definecolor{agamacolor}{RGB}{255, 150, 50} % 荧光橙
-
-% 方案D：传统但更鲜艳
-%\definecolor{adesacolor}{RGB}{30, 120, 220} % 饱和蓝色
-%\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
-
-% 高亮命令
-\newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 蓝色高亮
-\newcommand{\agamahl}[1]{\textcolor{agamacolor}{#1}} % 饱和棕色高亮
-
-% 语形计算命令
-\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \adesahl{#2}} % အာ​ဒေသ
-\newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
-\newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
-
-% 经文引用命令
-\newcommand{\suttena}[2]{\hfill%
-（依\suttalink{#1}{#2}）} % သု​တ္တေန
-
-% 语形计算环境（支持分页）
-\newenvironment{rupasiddhi}[1][0.9\linewidth] % 缩窄到90%宽度
-  {\parstart%
-   \hangindent=\dimexpr1.2em+0.5em\relax% 设置悬挂缩进（等号宽度+图标间距）
-   \hangafter=1% 从第一行之后开始悬挂
-   {\large\faCalculator}\hspace{0.5em}\hphantom{=}\hspace{0.18em}~% 图标和缩进，首行额外缩进
-   \palimmfont}% 直接设置巴利文字体
-  {\par}
-
-\newcommand{\blankline}{\\[1em]\hphantom{=}~} % 空白行（用于分隔语形计算实例）
-  
-% 示例
-% \begin{rupasiddhi}
-%     \linga{ပုရိသ} + \vibhatti{သိ} \\ 
-%     = ပုရိသ် + အ + သိ \\ 
-%     = ပုရိသ် + \lopa{အ} + သိ \\ 
-%     = ပုရိသ် + \adesa{သိ}{ဩ (ော)}\suttena{105}{2.45} \\ 
-%     = \pada{ပုရိ​သော}
-%     \blankline
-%     另一个语形计算实例
-% \end{rupasiddhi}
-
-% 巴利文示例环境
-\newcommand{\palisample}[1]{%
-    \begin{center}
-    \large \itshape #1
-    \end{center}
-}
-
-% 示例分隔符
-\newcommand{\sampleor}[1][或者]{\\\textup{\normalsize #1}\\}
-
-% 分隔线
-\newcommand{\seprule}{%
-    \begin{center}
-    \rule{0.4\linewidth}{0.6pt}
-    \end{center}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 4. 经文列表格式设置
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% 经文列表环境设置
+% 经文列表格式设置
+% 经文列表环境
 \usepackage{enumitem}
 \newlist{suttalist}{enumerate}{1}
 \setlist[suttalist,1]{
@@ -331,8 +217,119 @@
     \par\nobreak%     % 防止条目间出现不适当的分页
 }
 
+% ==================== 语形计算命令 ====================
+% 定义斜角删除线
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\newcommand{\mystrike}[1]{%
+  \tikz[baseline=(a.base)]{
+    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
+    % 计算对角线长度和角度
+    \coordinate (sw) at (a.south west);
+    \coordinate (ne) at (a.north east);
+    \coordinate (nw) at (a.north west);
+    \coordinate (se) at (a.south east);
+    
+    % 绘制45度对角线删除线（从左上到右下）
+    \draw[red, line width=0.8pt] 
+      ($(nw) + (-0.1em,0.1em)$) -- 
+      ($(se) + (0.1em,-0.1em)$);
+  }%
+}
+
+% 或者更精细的版本，带延长效果
+\newcommand{\mystrikeextended}[1]{%
+  \tikz[baseline=(a.base)]{
+    \node[inner sep=0pt, outer sep=0pt] (a) {#1};
+    % 计算扩展后的对角线端点
+    \path (a.south west) -- (a.north east) 
+      coordinate[pos=-0.1] (start) 
+      coordinate[pos=1.1] (end);
+    
+    % 绘制45度对角线删除线，两端延长10%
+    \draw[red, line width=0.8pt, line cap=round] 
+      (start) -- (end);
+  }%
+}
+
+% 定义语法专用颜色 - 鲜艳夺目版本
+\usepackage{xcolor}
+\definecolor{adesacolor}{RGB}{0, 100, 255} % 鲜艳蓝色
+\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
+
+% 可选的其他鲜艳配色方案：
+
+% 方案A：高对比度鲜艳色
+%\definecolor{adesacolor}{RGB}{255, 50, 50} % 鲜艳红色
+%\definecolor{agamacolor}{RGB}{30, 180, 30} % 鲜艳绿色
+
+% 方案B：明亮活力色
+%\definecolor{adesacolor}{RGB}{0, 150, 255} % 亮蓝色
+%\definecolor{agamacolor}{RGB}{255, 105, 0} % 亮橙色
+
+% 方案C：深色背景上的鲜艳色
+%\definecolor{adesacolor}{RGB}{100, 200, 255} % 荧光蓝
+%\definecolor{agamacolor}{RGB}{255, 150, 50} % 荧光橙
+
+% 方案D：传统但更鲜艳
+%\definecolor{adesacolor}{RGB}{30, 120, 220} % 饱和蓝色
+%\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
+
+% 高亮命令
+\newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 蓝色
+\newcommand{\agamahl}[1]{\textcolor{agamacolor}{#1}} % 饱和棕色
+
+% 语形计算命令
+\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \adesahl{#2}} % အာ​ဒေသ
+\newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
+\newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
+
+% 经文引用命令
+\newcommand{\suttena}[2]{\hfill%
+（依\suttalink{#1}{#2}）} % သု​တ္တေန
+
+% 语形计算环境（支持分页）
+\newenvironment{rupasiddhi}[1][0.9\linewidth] % 缩窄到90%宽度
+  {\parstart%
+   \hangindent=\dimexpr1.2em+0.5em\relax% 设置悬挂缩进（等号宽度+图标间距）
+   \hangafter=1% 从第一行之后开始悬挂
+   {\large\faCalculator}\hspace{0.5em}\hphantom{=}\hspace{0.18em}~% 图标和缩进，首行额外缩进
+   \palimmfont}% 使用细体缅文巴利字体
+  {\par}
+
+\newcommand{\blankline}{\\[1em]\hphantom{=}~} % 空白行（用于分隔语形计算实例）
+  
+% 示例
+% \begin{rupasiddhi}
+%     \linga{ပုရိသ} + \vibhatti{သိ} \\ 
+%     = ပုရိသ် + အ + သိ \\ 
+%     = ပုရိသ် + \lopa{အ} + သိ \\ 
+%     = ပုရိသ် + \adesa{သိ}{ဩ (ော)}\suttena{105}{2.45} \\ 
+%     = \pada{ပုရိ​သော}
+%     \blankline
+%     另一个语形计算实例
+% \end{rupasiddhi}
+
+% 巴利文示例环境
+\newcommand{\palisample}[1]{%
+    \begin{center}
+    \large \itshape #1
+    \end{center}
+}
+
+% 示例分隔符
+\newcommand{\sampleor}[1][或者]{\\\textup{\normalsize #1}\\}
+
+% 分隔线
+\newcommand{\seprule}{%
+    \begin{center}
+    \rule{0.4\linewidth}{0.6pt}
+    \end{center}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 5. 继承的功能说明
+% 4. 继承的功能说明
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 注：本类继承自dianjin类，包含以下功能：
