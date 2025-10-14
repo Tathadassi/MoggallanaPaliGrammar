@@ -187,7 +187,7 @@
 % 群组经文条目命令 - 使用方框标识且缩进，不带页码引用
 % 参数说明：
 %   #1 = 经文编号（用于标签引用）
-%   #2 = 方框内的条目标签内容
+%   #2 = 方框内的条目编号
 %   #3 = 经文内容
 \NewDocumentCommand{\suttaganaitem}{ m m m }{%
     \item[\hspace{2em}\fbox{#2}] \quad #3\par\nobreak%
@@ -206,7 +206,7 @@
 % 多行群组经文条目命令 - 使用方框标识且缩进，支持多行文本，不带页码引用
 % 参数说明：
 %   #1 = 经文编号（用于标签引用）
-%   #2 = 方框内的条目标签内容
+%   #2 = 方框内的条目编号
 %   #3 = 多行经文内容（支持\\换行）
 \NewDocumentCommand{\suttaganaitemmulti}{ m m m }{%
     \item[\hspace{2em}\fbox{#2}] \quad 
@@ -257,6 +257,8 @@
 \usepackage{xcolor}
 \definecolor{adesacolor}{RGB}{0, 100, 255} % 鲜艳蓝色
 \definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
+\definecolor{pariyayaAcolor}{RGB}{30, 180, 30} % 鲜艳绿色
+\definecolor{pariyayaBcolor}{RGB}{255, 105, 0} % 亮橙色
 
 % 可选的其他鲜艳配色方案：
 
@@ -279,11 +281,16 @@
 % 高亮命令
 \newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 蓝色
 \newcommand{\agamahl}[1]{\textcolor{agamacolor}{#1}} % 饱和棕色
+\newcommand{\pariyayaAhl}[1]{\textcolor{pariyayaAcolor}{#1}} % 
+\newcommand{\pariyayaBhl}[1]{\textcolor{pariyayaBcolor}{#1}} % 
 
 % 语形计算命令
-\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$ \adesahl{#2}} % အာ​ဒေသ
+\newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$\space\adesahl{#2}} % အာ​ဒေသ
+\newcommand{\changeto}{$\Rightarrow$\space} % 另一种အာ​ဒေသ
 \newcommand{\lopa}[1]{\mystrike{#1}} % လောပ
 \newcommand{\agama}[1]{\agamahl{#1}} % အာဂမ
+\newcommand{\pariyayaA}[1]{\pariyayaAhl{#1}} % 交换A
+\newcommand{\pariyayaB}[1]{\pariyayaBhl{#1}} % 交换B
 
 % 经文引用命令
 \newcommand{\suttena}[2]{\hfill%
@@ -294,7 +301,7 @@
   {\parstart%
    \hangindent=\dimexpr1.2em+0.5em\relax% 设置悬挂缩进（等号宽度+图标间距）
    \hangafter=1% 从第一行之后开始悬挂
-   {\large\faCalculator}\hspace{0.5em}\hphantom{=}\hspace{0.18em}~% 图标和缩进，首行额外缩进
+   \faCalculator\hspace{0.87em}\hphantom{=}~% 图标和缩进
    \palimmfont}% 使用细体缅文巴利字体
   {\par}
 
@@ -302,13 +309,18 @@
   
 % 示例
 % \begin{rupasiddhi}
-%     \linga{ပုရိသ} + \vibhatti{သိ} \\ 
-%     = ပုရိသ် + အ + သိ \\ 
-%     = ပုရိသ် + \lopa{အ} + သိ \\ 
-%     = ပုရိသ် + \adesa{သိ}{ဩ (ော)}\suttena{105}{2.45} \\ 
-%     = \pada{ပုရိ​သော}
-%     \blankline
-%     另一个语形计算实例
+%     % \linga{ပုရိသ} + \vibhatti{သိ}\\
+%     % = ပုရိသ် + အ + သိ\\
+%     % = ပုရိသ် + \lopa{အ} + သိ\\
+%     % = ပုရိသ် + \adesa{သိ}{ဩ (ော)}\suttena{105}{2.45}\\
+%     % = \pada{ပုရိ​သော}
+%     % \blankline
+%     % ဟိံသ\\
+%     % = ဟ် + ိ + ံ + သ် + အ\\
+%     % \changeto ဟ် + ိ + \lopa{ ံ} + သ် + အ\\
+%     % \changeto \pariyayaA{ဟ်} + \adesa{ ိ}{ီ} + \pariyayaB{သ်} + အ\\
+%     % \changeto \pariyayaB{သ်} + ီ + \pariyayaA{ဟ်} + အ\\
+%     % = သီဟ
 % \end{rupasiddhi}
 
 % 巴利文示例环境
