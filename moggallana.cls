@@ -260,29 +260,11 @@
 \definecolor{pariyayaAcolor}{RGB}{30, 180, 30} % 鲜艳绿色
 \definecolor{pariyayaBcolor}{RGB}{255, 105, 0} % 亮橙色
 
-% 可选的其他鲜艳配色方案：
-
-% 方案A：高对比度鲜艳色
-%\definecolor{adesacolor}{RGB}{255, 50, 50} % 鲜艳红色
-%\definecolor{agamacolor}{RGB}{30, 180, 30} % 鲜艳绿色
-
-% 方案B：明亮活力色
-%\definecolor{adesacolor}{RGB}{0, 150, 255} % 亮蓝色
-%\definecolor{agamacolor}{RGB}{255, 105, 0} % 亮橙色
-
-% 方案C：深色背景上的鲜艳色
-%\definecolor{adesacolor}{RGB}{100, 200, 255} % 荧光蓝
-%\definecolor{agamacolor}{RGB}{255, 150, 50} % 荧光橙
-
-% 方案D：传统但更鲜艳
-%\definecolor{adesacolor}{RGB}{30, 120, 220} % 饱和蓝色
-%\definecolor{agamacolor}{RGB}{200, 80, 0} % 饱和棕色
-
 % 高亮命令
-\newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 蓝色
+\newcommand{\adesahl}[1]{\textcolor{adesacolor}{#1}} % 鲜艳蓝色
 \newcommand{\agamahl}[1]{\textcolor{agamacolor}{#1}} % 饱和棕色
-\newcommand{\pariyayaAhl}[1]{\textcolor{pariyayaAcolor}{#1}} % 
-\newcommand{\pariyayaBhl}[1]{\textcolor{pariyayaBcolor}{#1}} % 
+\newcommand{\pariyayaAhl}[1]{\textcolor{pariyayaAcolor}{#1}} % 鲜艳绿色
+\newcommand{\pariyayaBhl}[1]{\textcolor{pariyayaBcolor}{#1}} % 亮橙色
 
 % 语形计算命令
 \newcommand{\adesa}[2]{\mystrikeextended{#1} $\rightarrow$\space\adesahl{#2}} % အာ​ဒေသ
