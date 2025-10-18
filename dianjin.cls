@@ -149,7 +149,7 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \babelfont[burmese]{rm}[Renderer=Harfbuzz]{NotoSansMyanmar} % 使用NotoSansMyanmar字体，启用Harfbuzz渲染器
 
 % 定义巴利文专用字体
-\newfontfamily{\palimmfont}[
+\newfontfamily{\palifont}[
     Renderer=Harfbuzz,
     Path=./Myanmar-Unicode-Fonts/,
     Extension=.ttf,
@@ -158,8 +158,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 ]{Padauk}
 
 % 巴利文格式命令
-\newcommand{\palimm}[1]{{\palimmfont #1}} % 细体缅文巴利
-\newcommand{\palimmbf}[1]{{\palimmfont\bfseries #1}} % 粗体缅文巴利
+\newcommand{\palimm}[1]{{\palifont #1}} % 细体缅文巴利
+\newcommand{\palimmbf}[1]{{\palifont\bfseries #1}} % 粗体缅文巴利
 \newcommand{\paliroman}[1]{\textit{#1}} % 斜体罗马巴利
 \newcommand{\paliromanbf}[1]{\textit{\bfseries #1}} % 粗斜体罗马巴利
 
@@ -672,8 +672,8 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 \newcommand{\namo}{
     \begin{center}
         \Large \textbf{\em 
-            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။}
-%            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
+            န​မော တဿ ဘဂဝ​တော အရဟ​တော သမ္မာသမ္ဗုဒ္ဓဿ။
+            \\礼敬那位帕格瓦、阿拉汉、正自觉者}
         \vspace{5ex}
     \end{center}
 }
@@ -703,6 +703,9 @@ urlcolor=darkgray,citecolor=blue,linkcolor=darkgray,filecolor=teal]{hyperref} % 
 
 % 8.3 文本标记命令
 \newcommand{\peyyala}[1]{$\cdots\cdots$} % 省略号：表示重复或省略的内容
+\NewDocumentCommand{\preciselabel}{ m }{%
+    \phantomsection\label{#1}%
+} % 精确标签命令 - 封装\phantomsection\label，提供精确的跳转定位
 
 % 8.4 自定义环境系统
 % 经名环境：用于显示经典名称（居中特大字体）
